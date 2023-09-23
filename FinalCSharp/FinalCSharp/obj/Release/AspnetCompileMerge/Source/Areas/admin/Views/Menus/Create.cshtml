@@ -1,0 +1,83 @@
+﻿@model FinalCSharp.Models.Menu
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form_content mt-3" style="width:95%;margin-left:auto;margin-right:auto;border:1px solid #009cff">
+    <div class=" pt-1 pb-1 mb-3" style="background-color:#009cff;padding-left:16px">
+        <h3 style="color:#fff;margin-bottom:0">Thêm Menu</h3>
+    </div>
+
+    @using (Html.BeginForm("Create", "Menus", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="form-horizontal">
+            <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+                <div>
+                    @Html.Label("Tên ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+                <div>
+                    @Html.Label("Liên kết", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+                <div>
+                    @Html.Label("Meta", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+                @Html.Label("Hiển thị", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.hide)
+                        @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+                @Html.Label("Sắp xếp", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div>
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.order)
+                        @Html.ValidationMessageFor(model => model.order, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mb-3" style="margin-left:120px;">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Tạo" class="btn btn-primary" />
+                    @Html.ActionLink("Trở về trang chủ", "Index", null, new { @class = "btn btn-danger" })
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section _Footer
+{
+
+    <script>
+        $(function () {
+            $("#name").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+                text_create = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a").replace(/\ /g, '-').replace(/đ/g, "d").replace(/đ/g, "d").replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y").replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u").replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ.+/g, "o").replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ.+/g, "e").replace(/ì|í|ị|ỉ|ĩ/g, "i");
+                $('#meta').val(text_create);
+            }).keyup();
+        });
+    </script>
+}

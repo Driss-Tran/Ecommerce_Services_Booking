@@ -1,0 +1,104 @@
+﻿@model FinalCSharp.Models.Order
+@{
+    ViewBag.Title = "Pay_By_ATM";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    string email = "";
+    if (Session["email"] != null)
+    {
+        email = Session["email"].ToString().Trim();
+    }
+}
+@section _Header{
+    <style>
+        tr:nth-child(2) {
+            border-bottom: 1px solid #787878;
+            border-collapse: collapse;
+        }
+
+        .form_payment {
+            /* border: 1px solid #878787; */
+            border-radius: 10px;
+            box-shadow: 2px 2px 8px #bcbbbb;
+            padding: 32px 20px 32px 20px;
+        }
+
+        .img_payment {
+            height: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-clip: content-box;
+            background-image: linear-gradient(rgba(155, 174, 244, 0.7),rgba(224, 148, 148, 0.91)),url('../../content/img/img.jpg');
+            border-radius: 12px;
+        }
+    </style>
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Thanh toán ATM</h1>
+    <div class="form_payment">
+        <div class="row ">
+            <div class="col-lg-5 d-lg-block d-none">
+                <div class="img_payment">
+
+                </div>
+            </div>
+            <div class="col-lg-7 col-sm-12 w-100 ">
+                <div>
+                    <div class="form-group">
+                        <label for="email_payment">Email</label>
+                        <input type="email" name="email" id="email_payment" class="form-control" placeholder="Email" value=@email>
+                    </div>
+                    <div class="form-group">
+                        <label for="credit_number">Số thẻ</label>
+                        <input type="text" name="credit_number" id="credit_number" class="form-control" placeholder="XXXX XXXX XXXX XXXX">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="expiry_day">Hạn sử dụng</label>
+                                <input type="date" name="expiry_day" id="expiry_day" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="credit_number">Mã CVV</label>
+                                <input type="text" name="credit_number" id="credit_number" class="form-control" placeholder="XXX">
+                            </div>
+                        </div>
+                    </div>
+                    <table width="100%">
+                        <tr style="height:40px">
+                            <th>Tạm tính</th>
+                            @{
+                                int price = Convert.ToInt32(Model.total_amount);
+                                string resultPrice = price.ToString("N0");
+                            }
+                            <td class="text-right">@resultPrice vnd</td>
+                        </tr>
+                        <tr class="pb-3">
+                            <th>Phí dịch vụ</th>
+                            <td class="text-right">15,000 vnd</td>
+                        </tr>
+
+                        <tr>
+                            <th style="height:40px">Tổng tiền</th>
+                            @{
+                                int price1 = Convert.ToInt32(Model.total_amount) + 15000;
+                                string resultPrice1 = price1.ToString("N0");
+                            }
+                            <td class="text-right">@resultPrice1 vnd</td>
+                        </tr>
+                    </table>
+                    <div class="form-group mt-3">
+                        <button type="button" class="btn btn-primary w-100">Thanh toán</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

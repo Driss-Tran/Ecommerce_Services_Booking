@@ -1,0 +1,106 @@
+﻿@model FinalCSharp.Models.News
+@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid page-header">
+    <div class="container">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
+            <h3 class="display-4 text-white text-uppercase">Tin tức</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="">Trang chủ</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">Tin tức</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+<!-- Blog Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                @{ String formatStringNews = Model.content_description.Replace("\n", Environment.NewLine);}
+                <h2>@Model.subtitle</h2>
+                <img src="~/Content/img/blog-1.jpg" width="100%" />
+                <!-- Blog Detail Start -->
+                <div class="pb-3 pt-2">
+                    <div class="bg-white mb-3" style="padding: 30px;">
+                        <div class="d-flex mb-3">
+                            <a class="text-primary text-uppercase text-decoration-none" href="">Nguồn : @Model.author</a>
+                            <span class="text-primary px-2">|</span>
+                            <a class="text-primary text-uppercase text-decoration-none" href="">@Model.title</a>
+                        </div>
+                        <p>
+                            @formatStringNews
+                        </p>
+                        
+                    </div>
+                </div>
+
+                <div class="bg-white mb-3" style="padding: 30px;">
+                    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Để lại comment</h4>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Tên <span style="color:red">*</span></label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email <span style="color:red">*</span></label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message <span style="color:red">*</span></label>
+                            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group mb-0">
+                            <input type="submit" value="Gửi"
+                                   class="btn btn-primary font-weight-semi-bold py-2 px-3">
+                        </div>
+                    </form>
+                </div>
+                <!-- Comment Form End -->
+            </div>
+
+            <div class="col-lg-4 mt-5 mt-lg-0">
+                <!-- Author Bio -->
+                <div class="d-flex flex-column text-center bg-white mb-5 py-5 px-4">
+                    <img src="~/Content/img/user.jpg" class="img-fluid mx-auto mb-3" style="width: 100px;">
+                    <h4 class="text-primary mb-3">Đăng bởi : <span style="color:#333">John Tran</span></h4>
+                    <div class="d-flex justify-content-center">
+                        <a class="text-primary px-2" href="">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a class="text-primary px-2" href="">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="text-primary px-2" href="">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a class="text-primary px-2" href="">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a class="text-primary px-2" href="">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- Recent Post -->
+                <div class="mb-5">
+                    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Tin tức gần đây</h4>
+                    @{Html.RenderAction("RecentNews", "News");}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

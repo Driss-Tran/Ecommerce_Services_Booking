@@ -1,0 +1,13 @@
+﻿@model IEnumerable<FinalCSharp.Models.Category>
+
+@foreach (var i in Model)
+{
+    <div class="d-flex justify-content-between mb-3 pb-3">
+        <h2><a href="/@ViewBag.meta/@i.meta/">@i.name</a></h2>
+        <h4 class="mt-2"><a style="color:#5392F9" href="/@ViewBag.meta/@i.meta/">Xem thêm</a></h4>
+    </div>
+    <div class="row">
+       @Html.Action("getServices", "Home", new { id = i.id, metaTitle = ViewBag.metatitle }) 
+    </div>
+}
+

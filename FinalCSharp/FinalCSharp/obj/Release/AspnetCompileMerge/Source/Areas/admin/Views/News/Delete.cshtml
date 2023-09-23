@@ -1,0 +1,135 @@
+﻿@model FinalCSharp.Models.News
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}   
+
+<style>
+
+    th{
+        overflow:auto;
+    }
+</style>
+
+<div class="content_table mt-3" style="width:96%;margin-left:auto;margin-right:auto;border:1px solid #009cff">
+    <div class=" pt-1 pb-1 mb-3" style="background-color:#009cff;padding-left:16px">
+        <h2 style="color:#fff;margin-bottom:0">Xóa tin tức</h2>
+    </div>
+    <h3 style="margin-left:30px;">Bạn có chắc là muốn xóa tin này?</h3>
+    <div>
+        <hr />
+        <table class="table" style="width:96%;margin-left:auto;margin-right:auto;">
+            <tr>
+                <th style="width:15%">
+                    @Html.DisplayName("Tên tác giả")
+
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.author)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Loại tin tức")
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.title)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Tiêu đề")
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.subtitle)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Hình ảnh")
+                </th>
+
+                <td>
+                    <img src="~/Content/img/@Model.img_link" withh="50%" />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.link)
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.link)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.meta)
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.meta)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Sắp xếp")
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.order)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Hiển thị")
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.hide)
+                </td>
+            </tr>
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Ngày cập nhật")
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.datebegin)
+                </td>
+            </tr>
+
+
+            <tr>
+                <th>
+                    @Html.DisplayName("Nội dung bản tin")
+                </th>
+
+                <td>
+                    @Html.DisplayFor(model => model.content_description)
+                </td>
+            </tr>
+
+        </table>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin-left : 15px;padding-bottom:15px">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                @Html.ActionLink("Quay lại trang chủ", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</div>

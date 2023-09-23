@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    String getlastPart = Path.GetFileName(HttpContext.Current.Request.Url.AbsolutePath);
+    if (getlastPart.Equals("khach-san"))
+    {
+        <div class="container-fluid py-5">
+            <div class="container pt-5 pb-3">
+                <div class="text-center pb-5">
+                    <h1>Những khách sạn nổi bật</h1>
+                </div>
+                @{ Html.RenderAction("getHotelCategory", "Home");}
+            </div>
+        </div>
+    }
+    else if (getlastPart.Equals("tour-du-lich"))
+    {
+        <div class="container-fluid py-5">
+            <div class="container pt-5 pb-3">
+                <div class="text-center pb-5">
+                    <h1>Những tour du lịch nổi bật</h1>
+                </div>
+                @{ Html.RenderAction("getTourCategory", "Home");}
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container-fluid py-5">
+            <div class="container pt-5 pb-3">
+                <div class="text-center mb-3 pb-3">
+                    <h1 class="text-primary text-uppercase" style="letter-spacing: 5px;">@Model.name</h1>
+                </div>
+                <div class="row">
+                    @Html.Action("getDetailCategoryServices", "Home", new { id = Model.id, metaTitle = ViewBag.metatitle });
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+
+
+

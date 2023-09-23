@@ -1,0 +1,88 @@
+﻿@model FinalCSharp.Models.Menu
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content_table mt-3" style="width:96%;margin-left:auto;margin-right:auto;border:1px solid #009cff">
+    <div class=" pt-1 pb-1 mb-3" style="background-color:#009cff;padding-left:16px">
+        <h2 style="color:#fff;margin-bottom:0">Chỉnh sửa Menu</h2>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="container">
+                <div class="row">
+                    <div class="form-group col-lg-6">
+                        @Html.Label("Tên", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div style="width:80%">
+                            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        @Html.Label("Đường dẫn", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div style="width:80%">
+                            @Html.EditorFor(model => model.link, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.link, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 mt-3">
+                        @Html.LabelFor(model => model.meta, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div style="width:80%">
+                            @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 mt-3">
+                        @Html.LabelFor(model => model.datebegin, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div style="width:80%">
+                            @Html.EditorFor(model => model.datebegin, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.datebegin, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-lg-6 mt-3">
+                        @Html.LabelFor(model => model.hide, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div style="width:80%">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.hide)
+                                @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-lg-6 mt-3">
+                        @Html.LabelFor(model => model.order, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div style="width:80%">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.order)
+                                @Html.ValidationMessageFor(model => model.order, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3 mb-3">
+                    <div class="col-md-offset-2 ">
+                        <input type="submit" value="Lưu" class="btn btn-success" /> |
+                        @Html.ActionLink("Quay về trang chủ", "Index", null, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+           
+           
+            
+        </div>
+    }
+</div>

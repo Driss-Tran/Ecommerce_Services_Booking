@@ -1,0 +1,111 @@
+﻿@model IEnumerable<FinalCSharp.Models.ShoppingCartItem>
+
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-normal mb-0 text-black">Giỏ hàng của bạn</h3>
+</div>
+@if (Model != null && Model.Any())
+{
+    string TempData = "";
+    string link = "";
+    int sumOfPrice = 0;
+    foreach (var item in Model)
+    {
+        sumOfPrice += Convert.ToInt32(item.TotalPrice);
+        if (item.CategoryId == 1)
+        {
+            TempData = "Tour trong nước";
+            link = "tour-trong-nuoc";
+        }
+        else if (item.CategoryId == 2)
+        {
+            TempData = "Tour ngoài nước";
+            link = "tour-ngoai-nuoc";
+
+        }
+        else if (item.CategoryId == 3)
+        {
+            TempData = "Khách sạn trong nước";
+            link = "ks-trong-nuoc";
+
+        }
+        else if (item.CategoryId == 4)
+        {
+            TempData = "Khách sạn ngoài nước";
+            link = "ks-ngoai-nuoc";
+
+        }
+        <div class="card rounded-3 mb-4" id="trow_@item.ProductId">
+            <div class="card-body p-4">
+                <div class="row d-flex justify-content-between align-items-center">
+                    <a class="col-md-2 col-lg-2 col-xl-2" href="/dich-vu/@link/@item.Meta">
+                        <img src="~/Content/img/@item.ProductImg" class="img-fluid rounded-3" alt="tour">
+                    </a>
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        <a href="/dich-vu/@link/@item.Meta">
+                            <p class="lead fw-normal mb-2">@item.ProductName</p>
+
+                        </a>
+
+                        <p><span class="text-muted">Danh mục : </span>@TempData</p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+                        <button class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                            <i class="fas fa-minus"></i>
+                        </button>
+
+                        <input id="Quantity_@item.ProductId" min="0" name="quantity" value="@item.Quantity" type="number"
+                               class="form-control form-control-sm" />
+
+                        <button class="btn btn-link px-2"
+                                onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2" style="margin-bottom:24px;">
+                        <label>Giá:</label>
+                        @{
+                            int price = Convert.ToInt32(item.Price);
+                            string resultPrice = price.ToString("N0");
+                        }
+                        <h5 class="mb-0">@resultPrice vnd</h5>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2" style="margin-bottom:24px;">
+                        <label>Giá tiền:</label>
+                        @{
+                            int price1 = Convert.ToInt32(item.TotalPrice);
+                            string resultPrice1 = price1.ToString("N0");
+                        }
+                        <h5 class="mb-0">@resultPrice1 vnd</h5>
+                    </div>
+
+                    <div class="col-md-1 col-lg-1 col-xl-1 text-end d-flex">
+                        <a href="#" class="btn text-success btnUpdate" data-id="@item.ProductId"><i class="fas fa-pen fa-lg"></i></a>
+                        <a href="#" class="btn text-danger btnDelete" data-id="@item.ProductId"><i class="fas fa-trash fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    }
+    <hr />
+    <div class="text-right">
+        <h4>Tổng tiền : <span style="color:red;">@sumOfPrice.ToString("N0") vnd</span></h4>
+    </div>
+    <hr />
+
+    <div class=" sumOfPrice d-flex mt-2 ">
+        <a href="/thanh-toan" class="btn btn-lg btn-primary mr-3" style="color: white; border-radius: 12px;width:250px;">Thanh toán</a>
+        <button type="button" class="btn btn-lg btn-danger btnDeleteAll" style="color: white; border-radius: 12px; width: 250px;">Xóa hết</button>
+
+    </div>
+
+}
+else
+{
+    <hr />
+    <h5>Không có sản phẩm nào trong giỏ hàng.</h5>
+    <h5>Bạn có thể lựa chọn các dịch vụ khác <a href="/" style="color:#0094ff;text-decoration:underline;">tại đây</a>.</h5>
+}

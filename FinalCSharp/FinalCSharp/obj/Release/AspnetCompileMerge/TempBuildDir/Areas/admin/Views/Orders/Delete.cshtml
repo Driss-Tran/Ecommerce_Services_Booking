@@ -1,0 +1,84 @@
+﻿@model FinalCSharp.Models.Order
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    th {
+        overflow: auto;
+    }
+</style>
+
+<div class="content_table mt-3" style="width:96%;margin-left:auto;margin-right:auto;border:1px solid #009cff">
+    <div class=" pt-1 pb-1 mb-3" style="background-color:#009cff;padding-left:16px">
+        <h2 style="color:#fff;margin-bottom:0">Xóa đơn hàng</h2>
+    </div>
+    <h3 style="margin-left:30px;">Bạn có chắc là muốn xóa đơn hàng này?</h3>
+    <div>
+        <hr />
+        <table class="table" style="width:96%;margin-left:auto;margin-right:auto;">
+        <tr>
+            <th>Code</th>
+            <td>@Html.DisplayFor(model => model.code)</td>
+        </tr>
+        <tr>
+            <th>Tên khách hàng</th>
+            <td>@Html.DisplayFor(model => model.customer_name)</td>
+        </tr>
+
+        <tr>
+            <th>Số điện thoại</th>
+            <td>@Html.DisplayFor(model => model.phone)</td>
+        </tr>
+
+        <tr>
+            <th>Địa chỉ</th>
+            <td>@Html.DisplayFor(model => model.address)</td>
+        </tr>
+
+        <tr>
+            <th>Tổng tiền</th>
+            <td>@Html.DisplayFor(model => model.total_amount)</td>
+        </tr>
+
+        <tr>
+            <th>Số lượng</th>
+            <td>@Html.DisplayFor(model => model.quantity)</td>
+        </tr>
+
+        <tr>
+            <th>Email</th>
+            <td>@Html.DisplayFor(model => model.email)</td>
+        </tr>
+
+        <tr>
+            <th>Phương thức thanhh toán</th>
+            <td>@Html.DisplayFor(model => model.type_payment)</td>
+        </tr>
+
+        <tr>
+            <th>Ngày tạo</th>
+            <td>@Html.DisplayFor(model => model.created_date)</td>
+        </tr>
+
+        <tr>
+            <th>Người tạo</th>
+            <td>@Html.DisplayFor(model => model.created_by)</td>
+        </tr>
+
+        </table>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin-left : 15px;padding-bottom:15px">
+                <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                @Html.ActionLink("Quay lại trang chủ", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
+</div>

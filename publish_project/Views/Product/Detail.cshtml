@@ -1,0 +1,211 @@
+﻿@model FinalCSharp.Models.Product
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+    .owl-item {
+        margin-right: 15px !important;
+    }
+
+    .booking_detail {
+        border-radius: 15px;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev /*, .carousel-indicators */ {
+        filter: invert(100%);
+    }
+
+    .carousel-control-prev {
+        left: -100px;
+    }
+
+    .carousel-control-next {
+        right: -100px;
+    }
+
+    .line_space_content {
+        height: 0px;
+        border: none;
+        border-top: 2px solid #ccc;
+    }
+
+    .desc_detail p, .desc_detail {
+        font-size: 1.5rem;
+        padding-bottom: 54px;
+    }
+</style>
+
+<!-- Detail -->
+<div class="detail_product pt-5">
+    <div class="text-center pb-3">
+        <h2>@Model.name</h2>
+    </div>
+    <div class="container">
+        <div class="row category ">
+            <div class=" col-lg-6">
+                <h4 style="color:#488eb4">Tour du lịch <span style="text-transform:lowercase;">@Model.area</span></h4>
+            </div>
+            <div class="col-lg-6 text-right">
+                <h4 style="color:#488eb4">Giá: <span style="color:rgb(211, 83, 83)">@Model.price vnd</span></h4>
+            </div>
+        </div>
+        <div class="row mt-3">
+
+            <div class="col-lg-5 pt-2 ">
+                <img src="~/Content/img/@Model.img_link" alt="" style="width:100%;height:500px">
+
+                <div class="owl-carousel testimonial-carousel pt-5">
+                    <div class="">
+                        <img src="~/Content/img/@Model.img_link" alt="" style="width:100%;height:150px">
+                    </div>
+
+                    <div class="">
+                        <img src="~/Content/img/@Model.img_link" alt="" style="width:100%;height:150px">
+                    </div>
+
+                    <div class="">
+                        <img src="~/Content/img/@Model.img_link" alt="" style="width:100%;height:150px">
+                    </div>
+
+                    <div class="">
+                        <img src="~/Content/img/@Model.img_link" alt="" style="width:100%;height:150px">
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="desc_detail">@Html.Raw(@Model.description)</div>
+                <hr class="line_space_content" />
+
+                <div class="info_tour d-flex justify-content-between">
+                    <div>
+                        <div class="d-flex">
+                            <p class="pr-2" style="font-size:18px">Đánh giá : @Model.review</p>
+                            <div style="padding-top:0.5px;">
+                                <i class="fas fa-star" style="color:#ffd800;font-size:1.5rem"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div style="padding-top:0.5px;">
+                            <i class="fas fa-map-marker"></i>
+                        </div>
+                        <p class="pl-2" style="font-size:18px">Địa điểm : @Model.position</p>
+                    </div>
+                </div>
+
+                <div class="call_contact mt-4 row">
+                    <div class="col-lg-6">
+                        <label for="quantity_value">Số lượng:</label>
+                        <input type="number" id="quantity_value" name="quantity_value" value="@Model.quantity" min="@Model.quantity">
+                    </div>
+                    <div class="col-lg-6">
+                        <button class="btn btnAddToCart" style="background-color:#488eb4;color: #fff;border-radius: 6px;padding:8px 16px 8px 16px;" data-id="@Model.id"><span style="font-size : 18px;">Đặt ngay</span></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="container-fluid mt-5 pb-5 ">
+        <div class="container pb-5">
+            <h4 class="pb-3">Kiểm tra lịch trình</h4>
+            <div class="bg-light shadow booking_detail" style="padding: 30px;">
+                <div class="row align-items-center" style="min-height: 60px;">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Destination</option>
+                                        <option value="1">Destination 1</option>
+                                        <option value="2">Destination 1</option>
+                                        <option value="3">Destination 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date1" data-target-input="nearest">
+                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <div class="date" id="date2" data-target-input="nearest">
+                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="mb-3 mb-md-0">
+                                    <select class="custom-select px-4" style="height: 47px;">
+                                        <option selected>Duration</option>
+                                        <option value="1">Duration 1</option>
+                                        <option value="2">Duration 1</option>
+                                        <option value="3">Duration 1</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @{ String otherProductName = "Một số tour khác";
+        if (Model.category_id == 3 || Model.category_id == 4)
+        {
+            otherProductName = "Một số khách sạn khác";
+        }
+
+    }
+
+    <div class="related_product container">
+        <h4>@otherProductName</h4>
+
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+
+                @Html.Action("getOtherService", "Product", new { category_id = Model.category_id })
+
+                <!-- Left and right controls -->
+
+            </div>
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+
+
+

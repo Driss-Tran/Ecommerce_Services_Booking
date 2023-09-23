@@ -1,0 +1,160 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@{Html.RenderAction("getSlider", "Home");}
+<!-- Carousel End -->
+<!-- Booking Start -->
+<div class="container-fluid booking mt-5 pb-5">
+    <div class="container pb-5">
+        <div class="bg-light shadow" style="padding: 30px;">
+            <div class="row align-items-center" style="min-height: 60px;">
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <select class="custom-select px-4" style="height: 47px;">
+                                    <option selected>Destination</option>
+                                    <option value="1">Destination 1</option>
+                                    <option value="2">Destination 1</option>
+                                    <option value="3">Destination 1</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <div class="date" id="date1" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <div class="date" id="date2" data-target-input="nearest">
+                                    <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3 mb-md-0">
+                                <select class="custom-select px-4" style="height: 47px;">
+                                    <option selected>Duration</option>
+                                    <option value="1">Duration 1</option>
+                                    <option value="2">Duration 1</option>
+                                    <option value="3">Duration 1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Booking End -->
+<div class="container-fluid py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-6" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100" src="~/Content/img/about.jpg" style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-6 pt-5 pb-lg-5">
+                <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                    <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Về chúng tôi</h6>
+                    <h1 class="mb-3">Sứ mệnh của chúng tôi:</h1>
+                    <p>
+                        Sứ mệnh của chúng tôi là trở thành một Doanh nghiệp thương mại du lịch hàng đầu Việt Nam.
+                        Tận tâm phục vụ những khách hàng trong thị trường mà Công ty có được
+                    </p>
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <img class="img-fluid" src="~/Content/img/about-1.jpg" alt="">
+                        </div>
+                        <div class="col-6">
+                            <img class="img-fluid" src="~/Content/img/about-2.jpg" alt="">
+                        </div>
+                    </div>
+                    <a href="" class="btn btn-primary mt-1">Đặt ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature Start -->
+<div class="container-fluid pb-5">
+    <div class="container pb-5">
+        <div class="pb-5 pt-3">
+            <h3>Những lợi ích khi dùng PPS Traveler</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="">Giá cả cạnh tranh</h5>
+                        <p class="m-0">Chúng tôi xin cam kết giá cả dịch vụ chúng tôi luôn ở mức tốt nhất và có nhiều ưu đãi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-award text-white"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="">Dịch vụ tốt</h5>
+                        <p class="m-0">Chúng tôi sẽ cố gắng cung cấp các dịch vụ tốt nhất cho khách hàng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex mb-4 mb-lg-0">
+                    <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                        <i class="fa fa-2x fa-globe text-white"></i>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <h5 class="">Website phủ toàn cầu</h5>
+                        <p class="m-0">Dịch vụ chúng tôi phủ toàn cầu. Chúng tôi kí kết hợp tác rất nhiều tổ chức quốc tế</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End -->
+<!-- Destination Start -->
+
+<!-- Destination Start -->
+
+<!-- Packages Start -->
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center pb-5">
+            <h1>Những dịch vụ nổi bật</h1>
+        </div>
+        @{ Html.RenderAction("getCategory", "Home");}
+    </div>
+</div>
+<!-- Packages End -->
+
+
+   <div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="text-center mb-3 pb-3">
+            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Tin tức</h6>
+            <h1>Tin tức nổi bật</h1>
+        </div>
+        <div class="owl-carousel testimonial-carousel">
+                @{ Html.RenderAction("getNews", "Home");}
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="h-100" >
+    <div class="container-fluid h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10" id="load_data">
+                @Html.Action("Partial_Item_Cart","ShoppingCart")
+            </div>
+        </div>
+    </div>
+</section>
+

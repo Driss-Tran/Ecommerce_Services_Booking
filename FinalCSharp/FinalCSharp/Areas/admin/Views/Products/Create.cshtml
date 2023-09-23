@@ -1,0 +1,147 @@
+﻿@model FinalCSharp.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="form_content mt-3" style="width:95%;margin-left:auto;margin-right:auto;border:1px solid #009cff">
+    <div class=" pt-1 pb-1 mb-3" style="background-color:#009cff;padding-left:16px">
+        <h3 style="color:#fff;margin-bottom:0">Thêm sản phẩm</h3>
+    </div>
+    @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        <div>
+            @Html.Label("Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Số lượng khách", htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.customer_amount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.customer_amount, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                @Html.Label("Thời gian", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.duration, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.duration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Nội dung", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="">
+            @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Giá cả", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Hình ảnh", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            <div class="w-100">
+                <input type="file" name="img" id="img" accept=".jpg,.png,.gif,.jpeg,.bmp" />
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Meta", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            @Html.EditorFor(model => model.meta, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.meta, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Hiển thị", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            <div class="checkbox">
+                @Html.EditorFor(model => model.hide)
+                @Html.ValidationMessageFor(model => model.hide, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Địa điểm", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            @Html.EditorFor(model => model.position, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.position, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Khu vực", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            @Html.EditorFor(model => model.area, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.area, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="width:80%;margin-left:120px;">
+        @Html.Label("Loại dịch vụ", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            @Html.DropDownList("category_id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mb-3" style="margin-left:120px;">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Tạo" class="btn btn-primary" />
+            @Html.ActionLink("Trở về trang chủ", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+</div>
+    }
+</div>
+
+
+
+@section _Footer
+{
+    <script src="~/Areas/admin/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/admin/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.replace("description");
+        var editor = CKEDITOR.replace("description", { height: '600px' });
+        customConfig: '/Areas/admin/Content/ckeditor/config.js';
+    </script>
+    <script>
+        $(function () {
+            $("#subtitle").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+                text_create = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a").replace(/\ /g, '-').replace(/đ/g, "d").replace(/đ/g, "d").replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y").replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u").replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ.+/g, "o").replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ.+/g, "e").replace(/ì|í|ị|ỉ|ĩ/g, "i");
+                $('#meta').val(text_create);
+            }).keyup();
+        });
+    </script>
+}

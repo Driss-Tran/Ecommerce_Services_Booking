@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<FinalCSharp.Models.Product>
+
+
+@foreach (var i in Model)
+{
+    String categoryName = "tour-trong-nuoc";
+    if (i.category_id == 2)
+    {
+        categoryName = "tour-ngoai-nuoc";
+    }else if(i.category_id == 3)
+    {
+        categoryName = "ks-trong-nuoc";
+    }else if(i.category_id == 4)
+    {
+        categoryName = "ks-ngoai-nuoc";
+    }
+
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="package-item bg-white mb-2">
+            <img class="img-fluid" src="/Content/img/@i.img_link" alt="">
+            <div class="p-4">
+                <div class="d-flex justify-content-between mb-3">
+                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>@i.position</small>
+                    <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>@i.duration </small>
+                    <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>@i.customer_amount Person</small>
+                </div>
+                <a class="tour-desc h5 text-decoration-none" href="/@ViewBag.meta/@categoryName/@i.meta">@i.name</a>
+                <div class="border-top mt-4 pt-4">
+                    <div class="d-flex justify-content-between">
+                        <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>@i.review</h6>
+                        <h5 class="m-0">$@i.price</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+

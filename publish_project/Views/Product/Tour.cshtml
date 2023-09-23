@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Tour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid py-5">
+    <div class="container pt-5 pb-3">
+        <div class="text-center pb-5">
+            <h1>Những tour du lịch nổi bật</h1>
+        </div>
+        @{ Html.RenderAction("getTourCategory", "Home");}
+    </div>
+</div>
+

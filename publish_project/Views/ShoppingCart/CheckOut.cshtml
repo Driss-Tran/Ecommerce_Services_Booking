@@ -1,0 +1,86 @@
+﻿
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+@section _Header{
+    <style>
+        .error{
+            color:red;
+        }
+    </style>
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Thanh toán</h1>
+            <p>Bạn vui lòng kiểm tra lại thông tin đơn hàng</p>
+        </div>
+    </div>
+    <hr />
+
+    @if (ViewBag.CheckCart != null)
+    {
+        <div class="row">
+            <div class="col-md-8">
+                <div id="show_success"></div>
+                @Html.Action("Partial_CheckOut","ShoppingCart");
+            </div>
+            <div class="col-md-4">
+                @Html.Action("Partial_Item_Payment", "ShoppingCart")
+            </div>
+        </div>
+    }
+    else
+    {
+        <h5>Bạn chưa lựa chọn dịch vụ để thanh toán.</h5>
+        <h5>Bạn có thể lựa chọn các dịch vụ khác <a href="/" style="color:#0094ff;text-decoration:underline;">tại đây</a>.</h5>
+    }
+
+
+</div>
+
+
+@section _Footer{
+    <script>
+        function OnSuccessCO(rs) {
+            if (!rs.Success) {
+                $("#show_success").html("Bạn đã đặt dịch vụ chưa thành công! Xin vui lòng thử lại");
+            }
+        }
+
+        $(document).ready(function () {
+            $("#myForm").validate({
+                rules: {
+                    "customer_name": {
+                        required : true
+                    },
+                    "Phone": {
+                        required: true
+                    },
+                    "Address": {
+                        required: true
+                    },
+                    "Email": {
+                        required: true
+                    }
+                },
+                messages: {
+                    "customer_name": "Bạn vui lòng nhập tên của bạn",
+                    "Phone": "Bạn vui lòng nhập số điện thoại của bạn",
+                    "Address": "Bạn vui lòng nhập địa chỉ của bạn",
+                    "Email" : "Bạn vui lòng nhập email của bạn"
+                    }
+
+            })
+        });
+
+
+
+
+    </script>
+}

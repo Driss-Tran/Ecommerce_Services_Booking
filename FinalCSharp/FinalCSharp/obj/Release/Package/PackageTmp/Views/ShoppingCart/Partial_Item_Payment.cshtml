@@ -1,0 +1,23 @@
+﻿@model IEnumerable<FinalCSharp.Models.ShoppingCartItem>
+
+@if(Model!=null && Model.Any())
+{
+    <h3>Dịch vụ đã chọn <span style="float:right;"><small>@Model.Count()</small></span></h3>
+    int sumOfPrice = 0;
+    <div style="border:1px solid #808080">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                sumOfPrice += Convert.ToInt32(item.TotalPrice);
+                    <tr>
+                        <td style="color:#333;font-weight:600">@item.ProductName</td>
+                        <td>@Convert.ToInt32(item.Price).ToString("N0")</td>
+                    </tr>
+                }
+            <tr>
+                <td style="color:red;font-weight:600">Tổng tiền : </td>
+                <td style="color:dodgerblue;font-weight:600">@Convert.ToInt32(sumOfPrice).ToString("N0")</td>
+            </tr>
+        </table>
+    </div>
+}

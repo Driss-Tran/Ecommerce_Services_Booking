@@ -1,0 +1,19 @@
+﻿
+
+@model IEnumerable<FinalCSharp.Models.Menu>
+
+
+
+<div class="d-flex flex-column justify-content-start">
+    @foreach (var i in Model)
+    {
+        if (!i.name.Equals("Home"))
+        {
+            @Html.ActionLink(@i.name, @i.link, "Home", null, new { @class = "nav-item nav-link footer-item-services" })
+        }
+
+
+
+
+    }
+</div>

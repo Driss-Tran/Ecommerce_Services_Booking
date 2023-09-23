@@ -1,0 +1,26 @@
+﻿ @model IEnumerable<FinalCSharp.Models.Menu>
+
+<div class="navbar-nav ml-auto py-0">
+
+    @{
+        String absolutePath = HttpContext.Current.Request.Url.AbsolutePath;
+    }
+    @foreach (var i in Model)
+    {
+        String activeClass = "";
+        String tempHref = "";
+        if (absolutePath.Equals("/" + i.meta)|| absolutePath.Equals("/dich-vu/" + i.meta) || (absolutePath.Equals("/") && i.link.Equals("index")))
+        {
+            activeClass = "active";
+        }
+        if(i.meta.Equals("khach-san") || i.meta.Equals("tour-du-lich"))
+        {
+            tempHref = "/dich-vu";
+        }
+
+        <a href="@tempHref/@i.meta" class="nav-item nav-link @activeClass">@i.name</a>
+
+
+    }
+
+</div>

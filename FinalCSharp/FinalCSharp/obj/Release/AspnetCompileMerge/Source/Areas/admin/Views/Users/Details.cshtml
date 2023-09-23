@@ -1,0 +1,68 @@
+﻿@model FinalCSharp.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+    th {
+        overflow: auto;
+    }
+</style>
+
+<div class="content_table mt-3" style="width:96%;margin-left:auto;margin-right:auto;border:1px solid #009cff">
+    <div class=" pt-1 pb-1 mb-3" style="background-color:#009cff;padding-left:16px">
+        <h2 style="color:#fff;margin-bottom:0">Xem chi tiết</h2>
+    </div>
+    <div>
+        <div>
+            <table class="table" style="width:96%;margin-left:auto;margin-right:auto;">
+                <tr>
+                    <th style="width:15%">
+                        @Html.DisplayName("Tên người dùng")
+
+                    </th>
+                    <td>
+                        @Html.DisplayFor(model => model.fullName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        @Html.DisplayName("Email")
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.email)
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        @Html.DisplayName("Mật khẩu")
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.password)
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        @Html.DisplayName("Số điện thoại")
+                    </th>
+
+                    <td>
+                        @Html.DisplayFor(model => model.phone)
+                    </td>
+                </tr>
+                </table>
+        </div>
+
+        <div class="form-actions no-color" style="margin-left : 24px;padding-bottom:15px">
+            @Html.ActionLink("Quay lại trang chủ", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>

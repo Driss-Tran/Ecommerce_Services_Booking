@@ -1,0 +1,73 @@
+﻿@model FinalCSharp.Models.User
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section _Header{
+    <link rel="stylesheet" href="~/Content/css/login.css">
+    <link rel="stylesheet" href="~/Content/fonts/material-icon/css/material-design-iconic-font.min.css">
+    
+}
+@{
+    if (Session["email"] != null)
+    {
+        Response.Redirect("/");
+    }
+}
+
+<!-- Sign up form -->
+@using (Html.BeginForm("Authen", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <section class="sign-in">
+        <div class="form_container container">
+            <div class="signin-content">
+                <div class="signin-image">
+                    <figure><img src="~/Content/img/signin-image.jpg" alt="sing up image"></figure>
+                    
+                </div>
+
+                <div class="signin-form">
+                    <h2 class="form-title">Đăng nhập</h2>
+                    <form method="POST" class="register-form" id="login-form">
+                        <div class="form-group">
+                            <label for="email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            @Html.TextBoxFor(model => model.email, new { id = "email", name = "email", placeholder = "Email của bạn", type = "email" })
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            @Html.PasswordFor(model => model.password, new { id = "pass", name = "pass", placeholder = "Mật khẩu của bạn" })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.DisplayFor(model => model.LoginErrorMessage, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                            <label for="remember-me" class="label-agree-term"><span><span></span></span>Ghi nhớ</label>
+                        </div>
+                        <div class="form-group form-button d-flex justify-content-between align-items-center">
+                            <input type="submit" name="signin" id="signin" class="form-submit" value="Đăng nhập" />
+                            <p class="mt-4">Hay</p>
+                            <ul class="socials mt-2">
+
+                                <li><a href="#"><i class="display-flex-center fab fa-facebook fa-lg"></i></a></li>
+                                <li><a href="#" style="color:red;"><i class="display-flex-center fab fa-google-plus fa-lg"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center fab fa-twitter fa-lg"></i></a></li>
+
+                            </ul>
+                        </div>
+                    </form>
+                 
+
+                    <div class="form-group mt-4">
+                        <p style="font-size:16px">Chưa có tài khoản ? <a href="@Url.Action("Register","Login")">Đăng ký ngay</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+

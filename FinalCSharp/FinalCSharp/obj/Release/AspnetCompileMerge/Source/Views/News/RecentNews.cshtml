@@ -1,0 +1,15 @@
+﻿@model IEnumerable<FinalCSharp.Models.News>
+
+@foreach(var i in Model){
+    <div class="pb-4">
+        <img class="img-fluid mx-auto w-100" src="~/Content/img/@i.img_link">
+        <div class="bg-white p-4">
+            <div class=" d-flex mb-2">
+                <a class="text-primary text-uppercase text-decoration-none" href="#">@i.author</a>
+                <span class="text-primary px-2">|</span>
+                <a class="text-primary  text-uppercase text-decoration-none" href="@ViewBag.meta/@i.meta">@i.title</a>
+            </div>
+            <a class="h5 m-0 tour-desc text-decoration-none" href="@ViewBag.meta/@i.meta">@i.subtitle</a>
+        </div>
+    </div>
+}
